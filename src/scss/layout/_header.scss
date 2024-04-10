@@ -1,0 +1,33 @@
+.header {
+	background-image: url(../../../build/img/header.webp);
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 55rem;
+	.header__content {
+		padding: 1rem;
+		.nav {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			& > h2 {
+				color: $blanco;
+				font-weight: $delgada;
+				text-transform: uppercase;
+				font-size: 3.1rem;
+				span {
+					font-weight: $bold;
+				}
+			}
+			.nav__links {
+				display: flex;
+				align-items: center;
+				gap: 1.5rem;
+				.nav__link {
+					text-decoration: none;
+					color: $blanco;
+				}
+			}
+		}
+	}
+}
