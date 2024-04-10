@@ -1,0 +1,38 @@
+.footer {
+	background-color: $grisOscuro;
+	padding: 1.8rem;
+	.container__footer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2.5rem;
+		@include telefono {
+			gap: 3rem;
+		}
+		h2 {
+			width: 100%;
+			color: $blanco;
+			font-weight: $semibold;
+			text-transform: uppercase;
+			font-size: clamp(1.7rem, 4.5vw, 2.2rem);
+			span {
+				font-weight: $bold;
+			}
+		}
+		.links_footer {
+			display: flex;
+			gap: 1.2rem;
+			@include telefono {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				width: 100%;
+			}
+			a {
+				text-align: center;
+				text-decoration: none;
+				color: $blanco;
+				margin: 0 1rem;
+			}
+		}
+	}
+}

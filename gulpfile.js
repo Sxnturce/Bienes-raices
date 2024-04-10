@@ -29,7 +29,7 @@ function css() {
         .pipe(dest('build/css'));
 }
 
-function javascript() {
+/* function javascript() {
     return src(paths.js)
         .pipe(sourcemaps.init())
         .pipe(concat('bundle.js'))
@@ -38,7 +38,7 @@ function javascript() {
         .pipe(rename({ suffix: '.min' }))
         .pipe(dest('./build/js'))
 }
-
+ */
 function imagenes() {
     return src(paths.imagenes)
         .pipe(cache(imagemin({ optimizationLevel: 3 })))

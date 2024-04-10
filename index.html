@@ -20,9 +20,17 @@
 
 <body>
     <header class="header">
-        <div class="contenedor header__content">
-            <div class="nav">
+        <div class="container-header">
+            <div class="contenedor nav">
                 <h2>Bienes<span>Raices</span></h2>
+                <div class="container__checkbox">
+                    <input type="checkbox" id="checkbox">
+                    <label for="checkbox" class="toggle">
+                        <div class="bars" id="bar1"></div>
+                        <div class="bars" id="bar2"></div>
+                        <div class="bars" id="bar3"></div>
+                    </label>
+                </div>
                 <div class="nav__links">
                     <a href="#" class="nav__link">Nosotros</a>
                     <a href="#" class="nav__link">Anuncios</a>
@@ -31,13 +39,28 @@
                 </div>
             </div>
         </div>
-        <h2>Hola</h2>
+        <div class="contenedor container-text">
+            <h3>Venta de casas y departamentos</h3>
+            <h3>Exclusivos de Lujo</h3>
+        </div>
     </header>
+
+    <footer class="footer">
+        <div class="contenedor container__footer">
+            <div class="links_footer">
+                <a href="#" class="footer__link">Nosotros</a>
+                <a href="#" class="footer__link">Anuncios</a>
+                <a href="#" class="footer__link">Blog</a>
+                <a href="#" class="footer__link">Contacto</a>
+            </div>
+            <h2>Todos los Derechos Reservados 2024 &copy;</h2>
+        </div>
+    </footer>
 
 
     <!--Script-JavaScript -->
     <script src="../build/js/bundle.min.js"></script>
-    <script src="./js/app.js"></script>
+    <script src="./src/js/script.js"></script>
     <!--script-SweetAlert-2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
     <!--Font-Awesome -->

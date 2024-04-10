@@ -6,6 +6,7 @@ $fuente_principal: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
 
 // Tamaño de Media Queries
 $telefono: 480px;
+$bigphone: 600px;
 $tablet: 768px;
 $desktop: 1024px;
 
@@ -16,11 +17,13 @@ $verde: #71b100;
 $blanco: #ffffff;
 $gris: #e1e1e1;
 $grisOscuro: #333333;
+$negroClaro: #272727;
 
 $separacion: 5rem;
 
 // Fuentes
 $delgada: 300;
 $regular: 400;
+$semibold: 500;
 $bold: 700;
 $black: 900;
