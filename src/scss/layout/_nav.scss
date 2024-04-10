@@ -1,111 +1,114 @@
-.header {
-	.container-header {
-		position: fixed;
-		top: 0;
-		width: 100%;
-		z-index: 10;
-		.nav {
-			padding: 1rem;
+.container-header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+}
+
+.nav {
+	padding: 1rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	@include tablet {
+		justify-content: space-between;
+	}
+	& > a {
+		text-decoration: none;
+		h2 {
+			color: $blanco;
+			font-weight: $delgada;
+			text-transform: uppercase;
+			font-size: 3.1rem;
+			span {
+				font-weight: $bold;
+			}
+		}
+	}
+
+	.container__checkbox {
+		display: none;
+		@include tablet {
+			display: block;
+		}
+		#checkbox {
+			display: none;
+		}
+		.toggle {
+			position: relative;
+			z-index: 20;
+			width: 30px;
+			height: 30px;
+			cursor: pointer;
 			display: flex;
-			justify-content: space-around;
+			flex-direction: column;
 			align-items: center;
-			@include tablet {
-				justify-content: space-between;
+			justify-content: center;
+			gap: 10px;
+			transition-duration: 0.5s;
+			.bars {
+				width: 100%;
+				height: 4px;
+				background-color: $blanco;
+				border-radius: 3px;
 			}
-			& > h2 {
-				color: $blanco;
-				font-weight: $delgada;
-				text-transform: uppercase;
-				font-size: 3.1rem;
-				span {
-					font-weight: $bold;
-				}
+			#bar2 {
+				transition-duration: 0.8s;
 			}
-			.container__checkbox {
-				display: none;
-				@include tablet {
-					display: block;
-				}
-				#checkbox {
-					display: none;
-				}
-				.toggle {
-					position: relative;
-					z-index: 20;
-					width: 30px;
-					height: 30px;
-					cursor: pointer;
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-					justify-content: center;
-					gap: 10px;
-					transition-duration: 0.5s;
-					.bars {
-						width: 100%;
-						height: 4px;
-						background-color: $blanco;
-						border-radius: 3px;
-					}
-					#bar2 {
-						transition-duration: 0.8s;
-					}
 
-					#bar1,
-					#bar3 {
-						width: 70%;
-					}
-				}
-				#checkbox:checked + .toggle .bars {
-					position: absolute;
-					transition-duration: 0.5s;
-				}
-
-				#checkbox:checked + .toggle #bar2 {
-					transform: scaleX(0);
-					transition-duration: 0.5s;
-				}
-
-				#checkbox:checked + .toggle #bar1 {
-					width: 100%;
-					transform: rotate(45deg);
-					transition-duration: 0.5s;
-				}
-
-				#checkbox:checked + .toggle #bar3 {
-					width: 100%;
-					transform: rotate(-45deg);
-					transition-duration: 0.5s;
-				}
-
-				#checkbox:checked + .toggle {
-					transition-duration: 0.5s;
-					transform: rotate(180deg);
-				}
+			#bar1,
+			#bar3 {
+				width: 70%;
 			}
-			.nav__links {
-				display: flex;
-				align-items: center;
-				gap: 1.8rem;
-				@include tablet {
-					position: fixed;
-					height: 100dvh;
-					width: 50%;
-					flex-direction: column;
-					justify-content: center;
-					gap: 3.2rem;
-					font-weight: $semibold;
-					top: 0;
-					right: 0;
-					background-color: $negroClaro;
-					transform: translateX(100%);
-					transition: all 0.3s ease-in-out;
-				}
-				.nav__link {
-					text-decoration: none;
-					color: $blanco;
-				}
-			}
+		}
+		#checkbox:checked + .toggle .bars {
+			position: absolute;
+			transition-duration: 0.5s;
+		}
+
+		#checkbox:checked + .toggle #bar2 {
+			transform: scaleX(0);
+			transition-duration: 0.5s;
+		}
+
+		#checkbox:checked + .toggle #bar1 {
+			width: 100%;
+			transform: rotate(45deg);
+			transition-duration: 0.5s;
+		}
+
+		#checkbox:checked + .toggle #bar3 {
+			width: 100%;
+			transform: rotate(-45deg);
+			transition-duration: 0.5s;
+		}
+
+		#checkbox:checked + .toggle {
+			transition-duration: 0.5s;
+			transform: rotate(180deg);
+		}
+	}
+	.nav__links {
+		display: flex;
+		align-items: center;
+		gap: 1.8rem;
+		@include tablet {
+			position: fixed;
+			height: 100dvh;
+			width: 50%;
+			flex-direction: column;
+			justify-content: center;
+			gap: 3.2rem;
+			font-weight: $semibold;
+			top: 0;
+			right: 0;
+			background-color: $negroClaro;
+			transform: translateX(100%);
+			transition: all 0.3s ease-in-out;
+		}
+		.nav__link {
+			text-decoration: none;
+			color: $blanco;
 		}
 	}
 }

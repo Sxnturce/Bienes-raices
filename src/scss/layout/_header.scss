@@ -1,11 +1,27 @@
-.header {
+.no-webp .inicio {
+	background-image: url(../img/header.jpg);
+}
+
+.webp .inicio {
 	background-image: url(../img/header.webp);
-	background-position: center center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	height: 55rem;
-	display: flex;
-	justify-content: center;
+}
+
+.header {
+	background-color: $grisOscuro;
+	&.inicio {
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		height: 55rem;
+		display: flex;
+		justify-content: center;
+	}
+	&.fixed {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 10;
+	}
 	.container-text {
 		width: 100%;
 		display: flex;
