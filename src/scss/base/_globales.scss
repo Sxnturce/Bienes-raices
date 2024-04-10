@@ -52,3 +52,13 @@ h3 {
 h4 {
 	font-size: 2.6rem;
 }
+
+.main {
+	display: flex;
+	flex-direction: column;
+	gap: 5rem;
+}
+
+.header_color {
+	background-color: $grisOscuro;
+}

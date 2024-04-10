@@ -3,6 +3,7 @@
 	top: 0;
 	width: 100%;
 	z-index: 10;
+	transition: background-color 0.3s ease-in-out;
 }
 
 .nav {
@@ -20,6 +21,9 @@
 			font-weight: $delgada;
 			text-transform: uppercase;
 			font-size: 3.1rem;
+			@include telefono {
+				font-size: 2rem;
+			}
 			span {
 				font-weight: $bold;
 			}
@@ -44,7 +48,7 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			gap: 10px;
+			gap: 7px;
 			transition-duration: 0.5s;
 			.bars {
 				width: 100%;

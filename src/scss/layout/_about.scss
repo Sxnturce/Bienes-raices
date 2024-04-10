@@ -1,0 +1,34 @@
+.about {
+	display: flex;
+	flex-direction: column;
+	gap: 2.5rem;
+	h1 {
+		text-align: center;
+		font-size: clamp(2.5rem, 4.5vw, 3rem);
+		font-weight: $regular;
+	}
+	.grid {
+		@include grid(2rem);
+		@include telefono {
+			gap: 3.5rem;
+		}
+		.grid__card {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 2rem;
+			img {
+				width: 120px;
+				height: 100%;
+			}
+			p {
+				text-align: center;
+				font-size: 1.8rem;
+			}
+			h3 {
+				font-size: clamp(2.4rem, 4.5vw, 3rem);
+				font-weight: $regular;
+			}
+		}
+	}
+}

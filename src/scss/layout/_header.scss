@@ -32,6 +32,7 @@
 		h3 {
 			color: $blanco;
 			font-weight: $delgada;
+			font-size: clamp(2.5rem, 4.5vw, 3rem);
 		}
 	}
 }
