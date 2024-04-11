@@ -1,0 +1,32 @@
+.webp .contact {
+	background-image: url(../img/encuentra.webp);
+}
+.no-webp .contact {
+	background-image: url(../img/encuentra.jpg);
+}
+
+.contact {
+	width: 100%;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 30rem;
+	padding: 1rem;
+	.contact__text {
+		@include flex(center, center, column, 2rem);
+		height: 100%;
+		:where(h2, p) {
+			color: $blanco;
+			text-align: center;
+		}
+		h2 {
+			font-size: 2.3rem;
+		}
+		p {
+			font-size: 1.8rem;
+		}
+		a {
+			@include boton($amarillo, inline-block, 0.5rem 0.8rem);
+		}
+	}
+}

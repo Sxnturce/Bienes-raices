@@ -1,0 +1,7 @@
+.btn__green {
+	@include boton($verde, inline-block, 0.6rem 1rem);
+}
+
+.btn__yellow {
+	@include boton($amarillo, block, 0.5rem);
+}

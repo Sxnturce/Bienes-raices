@@ -27,3 +27,25 @@
 	gap: $gap;
 	grid-template-columns: repeat(auto-fill, minmax(min($size, 100%), 1fr));
 }
+
+@mixin boton($bgc, $type, $padding) {
+	text-decoration: none;
+	color: $blanco;
+	display: $type;
+	background-color: $bgc;
+	text-align: center;
+	padding: $padding;
+	font-weight: $semibold;
+	transition: all 0.3s ease-in-out;
+	&:hover {
+		background-color: darken($bgc, 5);
+	}
+}
+
+@mixin flex($justify, $align, $direction, $gap) {
+	display: flex;
+	justify-content: $justify;
+	align-items: $align;
+	flex-direction: $direction;
+	gap: $gap;
+}

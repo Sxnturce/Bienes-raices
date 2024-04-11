@@ -1,13 +1,13 @@
 .houses {
-	display: flex;
-	flex-direction: column;
-	gap: 4rem;
+	@include flex(initial, flex-end, column, 4rem);
 	h2 {
 		text-align: center;
 		font-size: clamp(2.5rem, 4.5vw, 3rem);
 		font-weight: $regular;
+		width: 100%;
 	}
 	.grid {
+		width: 100%;
 		@include grid(2.5rem, 340px);
 		@include tablet {
 			@include grid(3rem, 340px);
@@ -16,10 +16,7 @@
 			@include grid(4rem, 340px);
 		}
 		.grid__card {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			gap: 2rem;
+			@include flex(center, center, column, 2rem);
 			background-color: $gris;
 			border: 2px solid $grisV2;
 			img {
@@ -46,10 +43,7 @@
 					}
 				}
 				.grid__card--icon {
-					display: flex;
-					align-items: center;
-					justify-content: space-evenly;
-					gap: 1rem;
+					@include flex(space-evenly, center, row, 1rem);
 					.card__item {
 						display: flex;
 						align-items: center;
@@ -59,15 +53,6 @@
 						}
 					}
 				}
-			}
-			a {
-				text-decoration: none;
-				color: $blanco;
-				width: 100%;
-				background-color: $amarillo;
-				text-align: center;
-				padding: 0.5rem;
-				font-weight: $semibold;
 			}
 		}
 	}
