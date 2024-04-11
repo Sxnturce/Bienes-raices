@@ -1,0 +1,29 @@
+.aboutus {
+	height: 100dvh;
+	@include flex(center, center, column, 4.5rem);
+	max-height: 1000px;
+	padding: 1rem;
+	@include tablet {
+		max-height: inherit;
+		height: auto;
+	}
+	.content {
+		@include grid(3rem, 500px);
+		img {
+			width: 100%;
+			display: block;
+			align-content: center;
+			margin: 0 auto;
+			max-width: 500px;
+		}
+		.content__text {
+			@include flex(space-evenly, center, column, 1rem);
+			p {
+				font-size: 1.8rem;
+				@include tablet {
+					text-align: center;
+				}
+			}
+		}
+	}
+}
