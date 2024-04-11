@@ -1,14 +1,18 @@
 .about {
 	display: flex;
 	flex-direction: column;
-	gap: 2.5rem;
+	gap: 3.5rem;
 	h1 {
 		text-align: center;
 		font-size: clamp(2.5rem, 4.5vw, 3rem);
 		font-weight: $regular;
 	}
 	.grid {
-		@include grid(2rem, 300px);
+		@include grid(3.5rem, 340px);
+		@include tablet {
+			place-items: center;
+			gap: 5rem;
+		}
 		@include telefono {
 			gap: 3.5rem;
 		}
@@ -16,6 +20,7 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			max-width: 500px;
 			gap: 2rem;
 			img {
 				width: 120px;

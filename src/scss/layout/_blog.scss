@@ -1,0 +1,37 @@
+.grid__item--blog {
+	@include flex(normal, center, column, 3.5rem);
+	.card {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		gap: 2rem;
+		@include tablet {
+			grid-template-columns: 1fr;
+			gap: 3rem;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.card__text {
+			@include flex(normal, flex-start, column, 1rem);
+			hr {
+				background-color: $verde;
+				width: 30%;
+				height: 2px;
+			}
+			h3 {
+				font-size: 2.4rem;
+				margin-bottom: 0;
+				text-align: left;
+			}
+			p {
+				font-size: 1.7rem;
+				font-weight: $semibold;
+			}
+			span {
+				color: $amarillo;
+			}
+		}
+	}
+}

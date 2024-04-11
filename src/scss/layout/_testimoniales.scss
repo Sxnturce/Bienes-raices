@@ -1,0 +1,37 @@
+.grid__item--test {
+	@include flex(normal, center, column, 3.5rem);
+	.test__container {
+		padding: 2.3rem;
+		background-color: $verde;
+		@include bigphone {
+			padding: 1.2rem 1rem;
+		}
+		@include flex(normal, flex-start, row, 0);
+		border-radius: 1.5rem;
+		height: 100%;
+		max-width: 500px;
+		img {
+			width: 50px;
+			@include bigphone {
+				width: 40px;
+			}
+		}
+		.test__text {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+			gap: 1.5rem;
+			padding: 1.4rem;
+			height: 100%;
+			@include bigphone {
+				padding: 0.8rem;
+			}
+			p {
+				color: $blanco;
+			}
+			.test__name {
+				text-align: right;
+			}
+		}
+	}
+}

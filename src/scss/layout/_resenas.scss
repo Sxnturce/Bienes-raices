@@ -1,0 +1,11 @@
+.resenas {
+	.grid {
+		display: grid;
+		gap: 3rem;
+		grid-template-columns: 2fr 1fr;
+		@include desktop {
+			grid-template-columns: 1fr;
+			gap: 4rem;
+		}
+	}
+}

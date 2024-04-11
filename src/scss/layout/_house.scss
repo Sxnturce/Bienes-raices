@@ -9,16 +9,18 @@
 	.grid {
 		width: 100%;
 		@include grid(2.5rem, 340px);
+		place-items: center;
 		@include tablet {
 			@include grid(3rem, 340px);
 		}
 		@include desktop {
-			@include grid(4rem, 340px);
+			gap: 3rem;
 		}
 		.grid__card {
 			@include flex(center, center, column, 2rem);
 			background-color: $gris;
 			border: 2px solid $grisV2;
+			max-width: 500px;
 			img {
 				width: 100%;
 			}
@@ -54,6 +56,13 @@
 					}
 				}
 			}
+		}
+	}
+	& > a {
+		@include tablet {
+			display: block;
+			margin: 0 auto;
+			width: 70%;
 		}
 	}
 }
