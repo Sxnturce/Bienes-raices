@@ -22,15 +22,23 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
     function scrolled() {
+        const header_node = document.querySelector(".header")
         const header = document.querySelector(".container-header")
+        const child = header_node.firstElementChild
         const scrollposition = window.scrollY
-        if (scrollposition > 100) {
-            header.classList.add("header_color")
-        }
-        else {
-            header.classList.remove("header_color")
+
+        //Cambia el color del header
+        switch (child.classList.contains("container-header")) {
+            case true:
+                if (scrollposition > 0) {
+                    header.classList.add("header_color")
+                } else {
+                    header.classList.remove("header_color")
+                }
+                break
+            case false:
+                break
         }
     }
 })
