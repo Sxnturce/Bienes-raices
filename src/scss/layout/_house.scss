@@ -1,0 +1,74 @@
+.houses {
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	h2 {
+		text-align: center;
+		font-size: clamp(2.5rem, 4.5vw, 3rem);
+		font-weight: $regular;
+	}
+	.grid {
+		@include grid(2.5rem, 340px);
+		@include tablet {
+			@include grid(3rem, 340px);
+		}
+		@include desktop {
+			@include grid(4rem, 340px);
+		}
+		.grid__card {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 2rem;
+			background-color: $gris;
+			border: 2px solid $grisV2;
+			img {
+				width: 100%;
+			}
+			.container__card {
+				padding: 1rem;
+				display: flex;
+				flex-direction: column;
+				gap: 2rem;
+				.grid__card--text {
+					p {
+						text-align: center;
+						font-size: 1.6rem;
+						font-weight: 500;
+					}
+					h3 {
+						font-weight: $regular;
+						font-size: 2.5rem;
+					}
+					.price {
+						color: $verde;
+						font-weight: $semibold;
+					}
+				}
+				.grid__card--icon {
+					display: flex;
+					align-items: center;
+					justify-content: space-evenly;
+					gap: 1rem;
+					.card__item {
+						display: flex;
+						align-items: center;
+						gap: 0.5rem;
+						img {
+							width: 30px;
+						}
+					}
+				}
+			}
+			a {
+				text-decoration: none;
+				color: $blanco;
+				width: 100%;
+				background-color: $amarillo;
+				text-align: center;
+				padding: 0.5rem;
+				font-weight: $semibold;
+			}
+		}
+	}
+}

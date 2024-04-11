@@ -8,7 +8,7 @@
 		font-weight: $regular;
 	}
 	.grid {
-		@include grid(2rem);
+		@include grid(2rem, 300px);
 		@include telefono {
 			gap: 3.5rem;
 		}
