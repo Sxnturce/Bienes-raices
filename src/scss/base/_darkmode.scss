@@ -1,0 +1,82 @@
+.dark-mode {
+	background-color: $grisbg;
+	color: $blanco;
+	p {
+		color: $blanco;
+	}
+	.about {
+		h3 {
+			color: $grisV2;
+		}
+	}
+	.houses {
+		.grid {
+			.grid__card {
+				background-color: $grisOscuro;
+				border: 1px solid $grisOscuro;
+				.container__card {
+					.grid__card--text {
+						h3,
+						p {
+							color: $grisV2;
+						}
+					}
+					.grid__card--icon {
+						.card__item {
+							img {
+								filter: invert(1);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.anuncios {
+		.grid {
+			.grid__card {
+				background-color: $grisOscuro;
+				border: 1px solid $grisOscuro;
+				.container__card {
+					.grid__card--text {
+						.price {
+							color: $verde;
+						}
+					}
+				}
+			}
+		}
+	}
+	.anuncio {
+		.anuncio__icon {
+			.card__item {
+				img {
+					filter: invert(1);
+				}
+			}
+		}
+	}
+	.contacto {
+		.contacto__content {
+			.form {
+				fieldset {
+					border: 1px solid $grisV2;
+				}
+				fieldset:not(:last-child) {
+					.form__div {
+						.form__input {
+							background-color: $grisOscuro;
+							color: $blanco;
+							outline: 0;
+							border: 1px solid $grisOscuro;
+							transition: border-color 0.3s ease-in-out;
+							&:hover {
+								border-color: #66afe9;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

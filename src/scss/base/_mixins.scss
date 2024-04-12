@@ -17,6 +17,12 @@
 	}
 }
 
+@mixin horizontal {
+	@media (width < #{$horizontal}) {
+		@content;
+	}
+}
+
 @mixin desktop {
 	@media (width < #{$desktop}) {
 		@content;

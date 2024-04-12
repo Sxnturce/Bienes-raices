@@ -5,11 +5,30 @@ window.addEventListener("DOMContentLoaded", () => {
     const body = document.querySelector("body")
     const radiomail = document.getElementById("radiomail")
     const radiophone = document.getElementById("radiophone")
-
-
+    const desk_checkbox = document.querySelector(".desk_checkbox")
+    const mb_checkbox = document.getElementById("mb-checkbox")
     //Eventos
     checkbox.addEventListener("click", activeNav)
     window.addEventListener("scroll", scrolled)
+    desk_checkbox.addEventListener("click", activeEventCheckbox)
+    mb_checkbox.addEventListener("click", activeEventCheckbox)
+
+    //Modo oscuro
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        body.classList.add("dark-mode")
+        desk_checkbox.checked = true
+        mb_checkbox.checked = true
+    } else {
+        body.classList.remove("dark-mode")
+        desk_checkbox.checked = false
+        mb_checkbox.checked = false
+    }
+
+    function activeEventCheckbox() {
+        body.classList.toggle("dark-mode")
+    }
+
+
 
     //Activar nav
     function activeNav() {

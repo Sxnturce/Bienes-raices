@@ -34,6 +34,11 @@
 						outline: 0;
 						padding: 0.35rem;
 						border: 1px solid $grisV2;
+						transition: border-color 0.25s ease-in-out;
+						&:focus {
+							border-color: #66afe9;
+							box-shadow: 0 0 0 0.2rem rgba(89, 155, 209, 0.25);
+						}
 						textarea {
 							resize: none;
 						}
@@ -68,7 +73,7 @@
 							}
 						}
 					}
-					.form__input {
+					.form__under {
 						display: flex;
 						flex-direction: column;
 						border: none;
