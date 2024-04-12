@@ -3,10 +3,15 @@ window.addEventListener("DOMContentLoaded", () => {
     const checkbox = document.getElementById("checkbox")
     const nav_links = document.querySelector(".nav__links")
     const body = document.querySelector("body")
-
+    const radiomail = document.getElementById("radiomail")
+    const radiophone = document.getElementById("radiophone")
     //Eventos
     checkbox.addEventListener("click", activeNav)
     window.addEventListener("scroll", scrolled)
+    radiomail.addEventListener("click", detectInput)
+    radiophone.addEventListener("click", detectInput)
+
+
 
 
 
@@ -21,6 +26,27 @@ window.addEventListener("DOMContentLoaded", () => {
             body.classList.remove("no-scroll")
         }
     }
+
+
+    function detectInput(e) {
+        if (e.target.classList.contains("radiomail")) {
+            disabledInput();
+            return
+        } activeInput()
+    }
+
+    function disabledInput() {
+        document.getElementById("fechahora").disabled = true
+        document.getElementById("fechadate").disabled = true
+    }
+
+
+
+    function activeInput() {
+        document.getElementById("fechahora").disabled = false
+        document.getElementById("fechadate").disabled = false
+    }
+
 
     function scrolled() {
         const header_node = document.querySelector(".header")

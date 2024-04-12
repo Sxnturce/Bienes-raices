@@ -1,0 +1,90 @@
+.contacto {
+	max-width: 90rem;
+	margin-top: 10rem;
+	@include flex(center, center, column, 4.5rem);
+	.contacto__content {
+		@include flex(center, center, column, 2.5rem);
+		& > h3 {
+			font-weight: $regular;
+		}
+		img {
+			aspect-ratio: 3/2;
+			object-fit: cover;
+		}
+		.form {
+			width: 100%;
+			@include flex(center, auto, column, 1.5rem);
+			fieldset:not(:last-child) {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				gap: 1.5rem;
+				padding: 2rem;
+				legend {
+					font-weight: $bold;
+				}
+				.form__div {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					.form__label {
+						font-weight: $semibold;
+					}
+					.form__input {
+						outline: 0;
+						padding: 0.35rem;
+						border: 1px solid $grisV2;
+						textarea {
+							resize: none;
+						}
+					}
+				}
+			}
+			fieldset:nth-of-type(3) {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+				padding: 2rem;
+				legend {
+					font-weight: bold;
+				}
+				p {
+					font-size: 1.6rem;
+				}
+				.form__div {
+					display: flex;
+					flex-direction: column;
+					gap: 0.5rem;
+					label {
+						font-weight: $semibold;
+					}
+					.form__radios {
+						display: flex;
+						align-items: center;
+						gap: 4rem;
+						.form__radio {
+							label {
+								font-weight: $semibold;
+							}
+						}
+					}
+					.form__input {
+						display: flex;
+						flex-direction: column;
+						border: none;
+						& > input {
+							outline: 0;
+							padding: 0.35rem;
+							border: 1px solid $grisV2;
+						}
+					}
+				}
+			}
+			.btn {
+				@include boton($verde, inline-block, 0.6rem 1rem);
+				border: none;
+				cursor: pointer;
+			}
+		}
+	}
+}
