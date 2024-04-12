@@ -5,17 +5,13 @@ window.addEventListener("DOMContentLoaded", () => {
     const body = document.querySelector("body")
     const radiomail = document.getElementById("radiomail")
     const radiophone = document.getElementById("radiophone")
+
+
     //Eventos
     checkbox.addEventListener("click", activeNav)
     window.addEventListener("scroll", scrolled)
-    radiomail.addEventListener("click", detectInput)
-    radiophone.addEventListener("click", detectInput)
 
-
-
-
-
-    //Funciones
+    //Activar nav
     function activeNav() {
         if (checkbox.checked) {
             nav_links.style.transform = "translateX(0%)"
@@ -27,34 +23,13 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
-    function detectInput(e) {
-        if (e.target.classList.contains("radiomail")) {
-            disabledInput();
-            return
-        } activeInput()
-    }
-
-    function disabledInput() {
-        document.getElementById("fechahora").disabled = true
-        document.getElementById("fechadate").disabled = true
-    }
-
-
-
-    function activeInput() {
-        document.getElementById("fechahora").disabled = false
-        document.getElementById("fechadate").disabled = false
-    }
-
-
+    //Cambia el color del header
     function scrolled() {
         const header_node = document.querySelector(".header")
         const header = document.querySelector(".container-header")
         const child = header_node.firstElementChild
         const scrollposition = window.scrollY
 
-        //Cambia el color del header
         switch (child.classList.contains("container-header")) {
             case true:
                 if (scrollposition > 0) {
@@ -68,3 +43,34 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     }
 })
+
+//Checkbox contacto
+function activeEventCheckbox() {
+    const main = document.querySelector(".main");
+    const child = main.firstElementChild;
+
+    if (child.classList.contains("contacto")) {
+        radiomail.addEventListener("click", detectInput)
+        radiophone.addEventListener("click", detectInput)
+        //Detectar input
+        function detectInput(e) {
+            if (e.target.classList.contains("radiomail")) {
+                disabledInput();
+                return
+            } activeInput()
+        }
+        return
+    }
+
+    function disabledInput() {
+        document.getElementById("fechahora").disabled = true
+        document.getElementById("fechadate").disabled = true
+    }
+
+    function activeInput() {
+        document.getElementById("fechahora").disabled = false
+        document.getElementById("fechadate").disabled = false
+    }
+}
+
+activeEventCheckbox();
