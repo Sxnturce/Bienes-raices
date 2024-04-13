@@ -14,7 +14,7 @@
 		.form {
 			width: 100%;
 			@include flex(center, auto, column, 1.5rem);
-			fieldset:not(:last-child) {
+			fieldset {
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
@@ -39,9 +39,9 @@
 							border-color: #66afe9;
 							box-shadow: 0 0 0 0.2rem rgba(89, 155, 209, 0.25);
 						}
-						textarea {
-							resize: none;
-						}
+					}
+					textarea {
+						resize: none;
 					}
 				}
 			}
