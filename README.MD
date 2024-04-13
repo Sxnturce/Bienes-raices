@@ -1,6 +1,6 @@
 - [x] Crear la parte de la interfaz
 - [x] Desarrollar la parte del frontend
-- [-] Colocarle funcionalidad a la interfaz
+- [x] Colocarle funcionalidad a la interfaz
 - [ ] Desarrollar la parte del Backend
 - [ ] Realizar la conexion a la db
 - [ ] Traer los datos de la db
