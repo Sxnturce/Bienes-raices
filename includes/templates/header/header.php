@@ -21,7 +21,7 @@
 <body>
     <header class="header fixed">
         <div class="contenedor nav">
-            <a href="../index.html">
+            <a href="../index.php">
                 <h2>Bienes<span>Raices</span></h2>
             </a>
             <div class="container__checkbox">
@@ -33,10 +33,10 @@
                 </label>
             </div>
             <div class="nav__links">
-                <a href="./nosotros.html" class="nav__link">Nosotros</a>
-                <a href="./anuncios.html" class="nav__link">Anuncios</a>
-                <a href="./blog.html" class="nav__link">Blog</a>
-                <a href="./contacto.html" class="nav__link">Contacto</a>
+                <a href="./nosotros.php" class="nav__link">Nosotros</a>
+                <a href="./anuncios.php" class="nav__link">Anuncios</a>
+                <a href="./blog.php" class="nav__link">Blog</a>
+                <a href="./contacto.php" class="nav__link">Contacto</a>
                 <div class="toggle-switch mobile-switch">
                     <label class="switch-label">
                         <input type="checkbox" class="checkbox" id="mb-checkbox">
@@ -54,25 +54,3 @@
             </div>
         </div>
     </header>
-    <footer class="footer">
-        <div class="contenedor container__footer">
-            <div class="links_footer">
-                <a href="./nosotros.html" class="footer__link">Nosotros</a>
-                <a href="./anuncios.html" class="footer__link">Anuncios</a>
-                <a href="./blog.html" class="footer__link">Blog</a>
-                <a href="./contacto.html" class="footer__link">Contacto</a>
-            </div>
-            <h2>Todos los Derechos Reservados 2024 &copy;</h2>
-        </div>
-    </footer>
-
-
-    <!--Script-JavaScript -->
-    <script src="../build/js/bundle.min.js"></script>
-    <!--script-SweetAlert-2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
-    <!--Font-Awesome -->
-    <script src="https://kit.fontawesome.com/812c8ee19a.js" crossorigin="anonymous"></script>
-</body>
-
-</html>
