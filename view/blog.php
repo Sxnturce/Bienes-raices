@@ -1,5 +1,6 @@
 <?php
-include '../includes/templates/header/header.php';
+require('../includes/funciones.php');
+includeTemplate('header', 'header');
 ?>
 <main class="main">
     <div class="grid__item grid__item--blog contenedor blog">
@@ -64,5 +65,5 @@ include '../includes/templates/header/header.php';
 </main>
 
 <?php
-include '../includes/templates/footer/footer.php';
+includeTemplate('footer', 'footer');
 ?>

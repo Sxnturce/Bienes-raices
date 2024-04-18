@@ -1,7 +1,7 @@
 <?php
-include './includes/templates/header/header_index.php';
+require('./includes/funciones.php');
+includeTemplate('header', 'header_index');
 ?>
-
 <main class="main">
     <!-- About section -->
     <section class="contenedor about">
@@ -176,5 +176,5 @@ include './includes/templates/header/header_index.php';
 </main>
 
 <?php
-include './includes/templates/footer/footer_index.php';
+includeTemplate('footer', 'footer_index');
 ?>

@@ -1,5 +1,7 @@
 <?php
-include '../includes/templates/header.php';
+
+require('../includes/funciones.php');
+includeTemplate('header', 'header');
 ?>
 
 <main class="main">
@@ -32,7 +34,7 @@ include '../includes/templates/header.php';
                             <p>4</p>
                         </div>
                     </div>
-                    <a href="../view/anuncio.html" class="btn__yellow">Ver propiedad</a>
+                    <a href="./anuncio.php" class="btn__yellow">Ver propiedad</a>
                 </div>
             </div>
             <div class="grid__card">
@@ -61,7 +63,7 @@ include '../includes/templates/header.php';
                             <p>4</p>
                         </div>
                     </div>
-                    <a href="../view/anuncio.html" class="btn__yellow">Ver propiedad</a>
+                    <a href="./anuncio.php" class="btn__yellow">Ver propiedad</a>
                 </div>
             </div>
             <div class="grid__card">
@@ -90,7 +92,7 @@ include '../includes/templates/header.php';
                             <p>4</p>
                         </div>
                     </div>
-                    <a href="../view/anuncio.html" class="btn__yellow">Ver propiedad</a>
+                    <a href="./anuncio.php" class="btn__yellow">Ver propiedad</a>
                 </div>
             </div>
             <div class="grid__card">
@@ -119,7 +121,7 @@ include '../includes/templates/header.php';
                             <p>4</p>
                         </div>
                     </div>
-                    <a href="../view/anuncio.html" class="btn__yellow">Ver propiedad</a>
+                    <a href="./anuncio.php" class="btn__yellow">Ver propiedad</a>
                 </div>
             </div>
             <div class="grid__card">
@@ -148,7 +150,7 @@ include '../includes/templates/header.php';
                             <p>4</p>
                         </div>
                     </div>
-                    <a href="../view/anuncio.html" class="btn__yellow">Ver propiedad</a>
+                    <a href="./anuncio.php" class="btn__yellow">Ver propiedad</a>
                 </div>
             </div>
             <div class="grid__card">
@@ -177,7 +179,7 @@ include '../includes/templates/header.php';
                             <p>4</p>
                         </div>
                     </div>
-                    <a href="../view/anuncio.html" class="btn__yellow">Ver propiedad</a>
+                    <a href="./anuncio.php" class="btn__yellow">Ver propiedad</a>
                 </div>
             </div>
         </div>
@@ -185,5 +187,5 @@ include '../includes/templates/header.php';
 </main>
 
 <?php
-include '../includes/templates/footer.php';
+includeTemplate('footer', 'footer');
 ?>
