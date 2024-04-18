@@ -173,6 +173,7 @@ includeTemplate('header', 'header_index');
             </div>
         </div>
     </section>
+
 </main>
 
 <?php

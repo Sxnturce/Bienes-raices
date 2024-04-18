@@ -71,3 +71,9 @@ h4 {
 	font-family: bold;
 	text-decoration: underline;
 }
+
+.btn__admin {
+	@include boton($verde, block, 0.6rem 1rem);
+	width: max-content;
+	margin: 0 auto;
+}

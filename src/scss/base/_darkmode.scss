@@ -73,6 +73,11 @@
 							&:hover {
 								border-color: #66afe9;
 							}
+							.form__under {
+								.form__input::-webkit-calendar-picker-indicator {
+									filter: invert(1);
+								}
+							}
 						}
 					}
 				}

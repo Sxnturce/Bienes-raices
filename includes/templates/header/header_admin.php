@@ -8,9 +8,9 @@
     <!--Tittle -->
     <title>Bienes Raices</title>
     <!--Link-Icon -->
-    <link rel="icon" type="image/x-icon" href="../build/img/icoBienes.webp">
+    <link rel="icon" type="image/x-icon" href="../../build/img/icoBienes.webp">
     <!--Link-CSS -->
-    <link rel="stylesheet" href="../build/css/app.css">
+    <link rel="stylesheet" href="../../build/css/app.css">
     <!--Link-Boxicons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!--Link-Animation -->
@@ -21,7 +21,7 @@
 <body>
     <header class="header fixed">
         <div class="contenedor nav">
-            <a href="../index.php">
+            <a href="../../index.php">
                 <h2>Bienes<span>Raices</span></h2>
             </a>
             <div class="container__checkbox">
@@ -33,10 +33,10 @@
                 </label>
             </div>
             <div class="nav__links">
-                <a href="../view/nosotros.php" class="nav__link">Nosotros</a>
-                <a href="../view/anuncios.php" class="nav__link">Anuncios</a>
-                <a href="../view/blog.php" class="nav__link">Blog</a>
-                <a href="../view/contacto.php" class="nav__link">Contacto</a>
+                <a href="../../view/nosotros.php" class="nav__link">Nosotros</a>
+                <a href="../../view/anuncios.php" class="nav__link">Anuncios</a>
+                <a href="../../view/blog.php" class="nav__link">Blog</a>
+                <a href="../../view/contacto.php" class="nav__link">Contacto</a>
                 <div class="toggle-switch mobile-switch">
                     <label class="switch-label">
                         <input type="checkbox" class="checkbox" id="mb-checkbox">
