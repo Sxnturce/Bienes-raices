@@ -1,3 +1,6 @@
 .admin {
 	margin-top: 10rem;
+	& > h1 {
+		margin-bottom: 0;
+	}
 }
