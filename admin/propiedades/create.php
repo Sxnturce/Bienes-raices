@@ -20,7 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //Insertar datos en la db
     $query = "INSERT INTO propiedades (titulo, precio,descripcion,vendedores_id,habitaciones,wc,estacionamiento) VALUES ('$titulo', '$precio', '$descripcion', '$vendedores_id', '$habitaciones', '$wc', '$estacionamiento');";
 
-    echo $query;
+    $resultado = mysqli_query($db, $query);
+    if ($resultado) {
+        echo "Exitos";
+    }
 }
 
 ?>
