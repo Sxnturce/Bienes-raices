@@ -14,20 +14,41 @@ window.addEventListener("DOMContentLoaded", () => {
     mb_checkbox.addEventListener("click", activeEventCheckbox)
 
     //Modo oscuro
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    function enableDarkMode() {
         body.classList.add("dark-mode")
         desk_checkbox.checked = true
         mb_checkbox.checked = true
-    } else {
+        localStorage.setItem("dark-mode", "enabled")
+    }
+
+
+    function disableDarkMode() {
         body.classList.remove("dark-mode")
         desk_checkbox.checked = false
         mb_checkbox.checked = false
+        localStorage.setItem("dark-mode", "disabled")
     }
 
     function activeEventCheckbox() {
-        body.classList.toggle("dark-mode")
+        if (body.classList.contains("dark-mode")) {
+            disableDarkMode()
+        } else {
+            enableDarkMode()
+        }
     }
 
+    let preference = localStorage.getItem("dark-mode")
+    if (preference === "enabled") {
+        enableDarkMode();
+    } else if (preference === "disabled") {
+        disableDarkMode();
+    } else {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            enableDarkMode()
+        } else {
+            disableDarkMode()
+        }
+    }
 
 
     //Activar nav
