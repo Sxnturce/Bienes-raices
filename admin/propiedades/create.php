@@ -92,8 +92,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <main class="main">
     <div class="contenedor create">
-        <h1>Crear nueva propiedad</h1>
-        <a href="../../admin/" class="btn__admin">Regresar</a>
+        <div class="text__create">
+            <h1>Crear nueva propiedad</h1>
+            <a href="../../admin/" class="btn__admin">Regresar</a>
+        </div>
 
         <form class="form create__form" method="POST" action="./create.php" enctype="multipart/form-data">
             <div style=" width: 100%; background-color: #993030;">

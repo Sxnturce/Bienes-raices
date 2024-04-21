@@ -75,7 +75,6 @@ h4 {
 .btn__admin {
 	@include boton($verde, block, 0.6rem 1rem);
 	width: max-content;
-	margin: 0 auto;
 }
 
 .btn__create {

@@ -7,24 +7,40 @@ $peticion = "SELECT * FROM propiedades;";
 $resultado = mysqli_query($db, $peticion);
 
 includeTemplate('header', 'header');
-if (isset($_GET['resultado'])) : ?>
-    <script>
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Propiedad creada correctamente!!",
-            showConfirmButton: false,
-            timer: 1500
-        });
-    </script>
+
+if (isset($_GET['resultado'])) {
+    if ($_GET['resultado'] == 1) :
+?>
+        <script>
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Propiedad creada correctamente",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+    <?php
+    elseif ($_GET['resultado'] == 2) :
+    ?>
+        <script>
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Propiedad actualizada correctamente",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
 <?php
-endif;
+    endif;
+}
 ?>
 
 <main class="main">
     <div class="contenedor admin">
         <h1>Administrador</h1>
-        <a href="propiedades/create.php" class="btn__admin">Nueva Propiedad</a>
+        <a href="propiedades/create.php" class="btn__admin">Crear Propiedad</a>
     </div>
 
     <table class="contenedor table">
@@ -48,7 +64,7 @@ endif;
                     <td colspan="1">S./ <?php echo $data['precio'] ?></td>
                     <td colspan="1" class="acciones">
                         <div class="container__accions">
-                            <a href="./propiedades/update.php" class="update">Actualizar</a>
+                            <a href="./propiedades/update.php?id=<?php echo $data['id'] ?>&&imagen=<?php echo $data['imagen'] ?>" class="update">Actualizar</a>
                             <a href="./propiedades/delete.php" class="remove">Eliminar</a>
                         </div>
                     </td>

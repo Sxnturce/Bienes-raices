@@ -1,7 +1,12 @@
 .admin {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 	margin-top: 10rem;
+	gap: 2rem;
 	& > h1 {
 		margin-bottom: 0;
+		margin-top: 0;
 	}
 }
 .table {
