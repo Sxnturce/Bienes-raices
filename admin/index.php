@@ -17,8 +17,10 @@ if (isset($_GET['resultado'])) : ?>
             timer: 1500
         });
     </script>
-<?php endif;
+<?php
+endif;
 ?>
+
 <main class="main">
     <div class="contenedor admin">
         <h1>Administrador</h1>

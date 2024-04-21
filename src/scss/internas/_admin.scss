@@ -4,8 +4,8 @@
 		margin-bottom: 0;
 	}
 }
-table {
-	$negro: #000000;
+.table {
+	$negro: #2e2e2e;
 	border-collapse: collapse;
 	thead {
 		width: 100%;
@@ -34,6 +34,7 @@ table {
 					color: white;
 					font-weight: 500;
 					transition: background-color 0.3s ease-in-out;
+					border-radius: 2px;
 				}
 				.update {
 					background-color: #d4a729;
@@ -48,19 +49,21 @@ table {
 					}
 				}
 			}
-			.container__accions {
-				display: flex;
-				border: none;
-				flex-direction: column;
-				gap: 0.5rem;
-			}
 		}
-	}
-	img {
-		width: 100%;
-		max-width: 100px;
-		height: 100px;
-		margin: 0 auto;
-		object-fit: cover;
+		.container__accions {
+			display: flex;
+			flex-direction: column;
+			border: none;
+			gap: 0.5rem;
+			width: 80%;
+			margin: 0 auto;
+		}
+		img {
+			width: 100%;
+			max-width: 80px;
+			height: 80px;
+			margin: 0 auto;
+			object-fit: cover;
+		}
 	}
 }

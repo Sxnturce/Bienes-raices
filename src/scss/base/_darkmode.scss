@@ -73,4 +73,37 @@
 			}
 		}
 	}
+	.table {
+		$negro: #424242;
+		border-collapse: collapse;
+		background-color: #2c2c2c;
+		thead {
+			background-color: #363636;
+			tr {
+				th {
+					border: 1px solid $negro;
+					color: white;
+				}
+			}
+		}
+		tbody {
+			tr {
+				td {
+					border: 1px solid $negro;
+					.update {
+						background-color: #866830;
+						&:hover {
+							background-color: darken(#da9a24, 5);
+						}
+					}
+					.remove {
+						background-color: #663434;
+						&:hover {
+							background-color: darken(#9b1818, 5);
+						}
+					}
+				}
+			}
+		}
+	}
 }
