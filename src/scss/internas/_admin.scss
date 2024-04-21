@@ -49,6 +49,14 @@
 				}
 				.remove {
 					background-color: #9b1818;
+					width: 100%;
+					outline: 0;
+					color: white;
+					border-radius: 2px;
+					font-weight: 500;
+					padding: 0.38rem;
+					transition: background-color 0.3s ease-in-out;
+					border: none;
 					&:hover {
 						background-color: darken(#9b1818, 5);
 					}

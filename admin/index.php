@@ -8,6 +8,33 @@ $resultado = mysqli_query($db, $peticion);
 
 includeTemplate('header', 'header');
 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+
+
+    if ($id) {
+        //Eliminar imagen
+        $peticionimg = "SELECT imagen FROM propiedades WHERE id = $id";
+
+        $imagenQuery = mysqli_query($db, $peticionimg);
+        $imagen = mysqli_fetch_assoc($imagenQuery);
+
+        //Eliminar propiedad
+        $peticionDelete = "DELETE FROM propiedades WHERE id = $id";
+
+        $delete = mysqli_query($db, $peticionDelete);
+        if ($delete) {
+            header('Location: ../admin?resultado=3');
+        }
+    }
+    unlink("../imagenes/" . $imagen['imagen']);
+}
+
+
+
+
 if (isset($_GET['resultado'])) {
     if ($_GET['resultado'] == 1) :
 ?>
@@ -28,6 +55,18 @@ if (isset($_GET['resultado'])) {
                 position: "center",
                 icon: "success",
                 title: "Propiedad actualizada correctamente",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+    <?php
+    elseif ($_GET['resultado'] == 3) :
+    ?>
+        <script>
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Propiedad eliminada correctamente",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -65,7 +104,10 @@ if (isset($_GET['resultado'])) {
                     <td colspan="1" class="acciones">
                         <div class="container__accions">
                             <a href="./propiedades/update.php?id=<?php echo $data['id'] ?>&&imagen=<?php echo $data['imagen'] ?>" class="update">Actualizar</a>
-                            <a href="./propiedades/delete.php" class="remove">Eliminar</a>
+                            <form method="POST">
+                                <input type="hidden" name="id" id="id" value="<?php echo $data['id'] ?>">
+                                <input type="submit" class="remove" value="Eliminar" name="delete">
+                            </form>
                         </div>
                     </td>
                 </tr>
