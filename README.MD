@@ -1,8 +1,8 @@
 - [x] Crear la parte de la interfaz
 - [x] Desarrollar la parte del frontend
 - [x] Colocarle funcionalidad a la interfaz
-- [ ] Desarrollar la parte del Backend
-- [ ] Realizar la conexion a la db
-- [ ] Traer los datos de la db
+- [x] Realizar la conexion a la db
+- [x] Traer los datos de la db
+- [ ] Terminar la parte del Backend
 - [ ] Eliminar posibles bugs
 - [ ] Lanzar la pagina web
