@@ -5,6 +5,13 @@
 		font-weight: $semibold;
 		font-size: clamp(2.5rem, 4.5vw, 3rem);
 	}
+	& > img {
+		width: 100%;
+		height: 350px;
+		display: block;
+		margin: 0 auto;
+		object-fit: cover;
+	}
 	@include flex(center, center, column, 4rem);
 	.anuncio__text {
 		@include flex(center, normal, column, 3rem);
