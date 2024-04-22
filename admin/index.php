@@ -95,9 +95,9 @@ if (isset($_GET['resultado'])) {
         <tbody>
             <?php
             $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-            foreach ($datos as $data) : ?>
+            foreach ($datos as $index => $data) : ?>
                 <tr>
-                    <td colspan="1"><?php echo $data['id'] ?></td>
+                    <td colspan="1"><?php echo $index ?></td>
                     <td colspan="1"><?php echo $data['titulo'] ?></td>
                     <td colspan="1"> <img src="../imagenes/<?php echo $data['imagen'] ?>" alt="imagen-tabla" class="img__tabla"></td>
                     <td colspan="1">S./ <?php echo $data['precio'] ?></td>

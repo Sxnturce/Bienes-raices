@@ -2,32 +2,22 @@
 require("../includes/config/database.php");
 $db = connectDB();
 
-//Consulta para tener el valor maximo
-$consulta = "SELECT COUNT(*) AS totfilas FROM propiedades;";
-$query = mysqli_query($db, $consulta);
+//Obtener el id de la ultima propiedad
+$id = $_GET['id'];
+$id = filter_var($id, FILTER_VALIDATE_INT);
 
-if ($query) {
-    $resultado = mysqli_fetch_assoc($query);
-    $total = $resultado['totfilas'];
-
-    //Obtener el id de la ultima propiedad
-    $id = $_GET['id'];
-    $id = filter_var($id, FILTER_VALIDATE_INT);
-
-    if (!$id) {
-        header('Location: ../index.php');
-    } else if ($id > $total) {
+if (!$id) {
+    header('Location: ../index.php');
+} else {
+    $peticion = "SELECT * FROM propiedades WHERE id = $id;";
+    $result = mysqli_query($db, $peticion);
+    if ($result->num_rows === 0) {
         header('Location: ../index.php');
     } else {
-        $peticion = "SELECT * FROM propiedades WHERE id = $id;";
-        $result = mysqli_query($db, $peticion);
         $propiedad = mysqli_fetch_assoc($result);
     }
 }
 ?>
-
-
-
 
 <img loading="lazy" src="../imagenes/<?php echo $propiedad['imagen'] ?>" alt="imagen anuncio">
 <div class="anuncio__text">

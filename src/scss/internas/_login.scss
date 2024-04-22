@@ -1,0 +1,76 @@
+.logeo {
+	width: 100%;
+	height: 100dvh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login {
+	margin-top: 10rem;
+	max-width: 78rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding: 12rem 1rem;
+	border: 1px solid $grisV2;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+	h1 {
+		margin: 0;
+		@include telefono {
+			text-align: center;
+			font-size: 2.8rem;
+		}
+	}
+	.form {
+		margin: 0 auto;
+		max-width: 55rem;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		gap: 2.5rem;
+		.div__login {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			label {
+				font-weight: $semibold;
+				font-size: 1.9rem;
+			}
+			input {
+				outline: 0;
+				padding: 0.35rem;
+				border: 1px solid $grisV2;
+				transition: border-color 0.25s ease-in-out;
+				width: 100%;
+				&:focus {
+					border-color: #66afe9;
+					box-shadow: 0 0 0 0.2rem rgba(89, 155, 209, 0.25);
+				}
+			}
+			.container__pass {
+				display: flex;
+				align-items: center;
+				position: relative;
+				width: 100%;
+				.fa-regular {
+					position: absolute;
+					cursor: pointer;
+					right: 10px;
+				}
+			}
+		}
+		.form__submit {
+			cursor: pointer;
+			border: none;
+			font-weight: bold;
+			text-transform: uppercase;
+			padding: 1rem 0;
+			transition: all ease-in-out 0.3s;
+			&:hover {
+				background-color: $grisOscuro;
+				color: white;
+			}
+		}
+	}
+}

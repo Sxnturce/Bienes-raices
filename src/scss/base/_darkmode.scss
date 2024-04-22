@@ -109,4 +109,39 @@
 			}
 		}
 	}
+	.login {
+		border: 1px solid $gris;
+		background-color: $grisbg;
+		box-shadow: 0 0 10px 0 #81818133;
+		.form {
+			.div__login {
+				label {
+					font-weight: $semibold;
+					font-size: 1.9rem;
+				}
+				input {
+					outline: 0;
+					color: white;
+					border: 1px solid $negroClaro;
+					background-color: $grisOscuro;
+					transition: border-color 0.25s ease-in-out;
+					width: 100%;
+					&:focus {
+						border-color: #66afe9;
+						box-shadow: 0 0 0 0.2rem rgba(89, 155, 209, 0.25);
+					}
+				}
+			}
+			.form__submit {
+				border: none;
+				background-color: $grisOscuro;
+				transition: all ease-in-out 0.3s;
+				color: white;
+				&:hover {
+					background-color: white;
+					color: black;
+				}
+			}
+		}
+	}
 }

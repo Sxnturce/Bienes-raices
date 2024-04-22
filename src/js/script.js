@@ -84,6 +84,32 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 })
 
+
+function activeEye() {
+    const main = document.querySelector(".main");
+    const child = main.firstElementChild;
+
+    if (child.classList.contains("login")) {
+        const eye_icon = document.getElementById("icon_eye");
+        const pass = document.getElementById("pass");
+
+        eye_icon.addEventListener("click", changeIcon);
+
+        function changeIcon() {
+            if (eye_icon.classList.contains("fa-eye")) {
+                eye_icon.classList.replace("fa-eye", "fa-eye-slash");
+                pass.setAttribute("type", "text");
+
+            } else {
+                eye_icon.classList.replace("fa-eye-slash", "fa-eye");
+                pass.setAttribute("type", "password");
+            }
+        }
+    }
+}
+
+activeEye();
+
 //Checkbox contacto
 function activeEventCheckbox() {
     const main = document.querySelector(".main");
