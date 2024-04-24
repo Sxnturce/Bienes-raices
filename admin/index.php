@@ -1,4 +1,10 @@
 <?php
+session_start();
+$auth = $_SESSION['login'];
+if (!$auth) {
+    header('Location: ../index.php');
+}
+
 require('../includes/funciones.php');
 require('../includes/config/database.php');
 $db = connectDB();

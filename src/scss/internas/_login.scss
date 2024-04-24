@@ -39,7 +39,7 @@
 			}
 			input {
 				outline: 0;
-				padding: 0.35rem;
+				padding: 0.55rem;
 				border: 1px solid $grisV2;
 				transition: border-color 0.25s ease-in-out;
 				width: 100%;
@@ -73,4 +73,9 @@
 			}
 		}
 	}
+}
+
+.error {
+	color: $rojo;
+	font-size: 1.5rem;
 }

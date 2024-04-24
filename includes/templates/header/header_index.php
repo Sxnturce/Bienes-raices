@@ -1,3 +1,12 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$auth = $_SESSION['login'] ?? false;
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -38,6 +47,9 @@
                     <a href="./view/anuncios.php" class="nav__link">Anuncios</a>
                     <a href="./view/blog.php" class="nav__link">Blog</a>
                     <a href="./view/contacto.php" class="nav__link">Contacto</a>
+                    <?php if ($auth) : ?>
+                        <a href="./view/cerrar-sesion.php" class="nav__link">Logout</a>
+                    <?php endif; ?>
                     <div class="toggle-switch mobile-switch">
                         <label class="switch-label">
                             <input type="checkbox" class="checkbox" id="mb-checkbox">

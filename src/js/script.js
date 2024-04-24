@@ -96,12 +96,11 @@ function activeEye() {
         eye_icon.addEventListener("click", changeIcon);
 
         function changeIcon() {
-            if (eye_icon.classList.contains("fa-eye")) {
-                eye_icon.classList.replace("fa-eye", "fa-eye-slash");
+            if (eye_icon.classList.contains("fa-eye-slash")) {
                 pass.setAttribute("type", "text");
-
-            } else {
                 eye_icon.classList.replace("fa-eye-slash", "fa-eye");
+            } else {
+                eye_icon.classList.replace("fa-eye", "fa-eye-slash");
                 pass.setAttribute("type", "password");
             }
         }
