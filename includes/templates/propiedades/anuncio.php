@@ -1,5 +1,4 @@
 <?php
-require("../includes/config/database.php");
 $db = connectDB();
 
 //Obtener el id de la ultima propiedad

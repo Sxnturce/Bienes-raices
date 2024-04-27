@@ -1,5 +1,5 @@
 <?php
-require('../includes/funciones.php');
+require('../includes/app.php');
 includeTemplate('header', 'header');
 ?>
 
@@ -8,7 +8,6 @@ includeTemplate('header', 'header');
         <h2>Casa frente al bosque</h2>
         <?php
         include("../includes/templates/propiedades/anuncio.php");
-
         ?>
     </section>
 </main>

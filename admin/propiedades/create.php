@@ -1,11 +1,27 @@
 <?php
+
+declare(strict_types=1);
+
+use app\Propiedad;
+
+require('../../includes/app.php');
+
+
+$propiedad = new Propiedad();
+
+varDump($propiedad);
+exit;
+
+
 session_start();
 $auth = $_SESSION['login'];
 if (!$auth) {
     header('Location: ../index.php');
 }
+
+
 //Base de datos
-require('../../includes/config/database.php');
+
 $db = connectDB();
 
 //Consultar para obtener vendedores
@@ -14,7 +30,6 @@ $consulta = "SELECT * FROM vendedores;";
 $resultado = mysqli_query($db, $consulta);
 
 //Funciones
-require('../../includes/funciones.php');
 includeTemplate('header', 'header_admin');
 
 $verificador = "";
@@ -79,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         //Generar nombre de una imagen
-        $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
+        $nombreImagen = md5(uniqid(strval(rand()), true)) . ".jpg";
 
         move_uploaded_file($imagen["tmp_name"], $carpetaImagenes  . $nombreImagen);
 

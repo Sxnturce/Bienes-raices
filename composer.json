@@ -1,0 +1,17 @@
+{
+    "name": "sebastiansr/bienes-ru",
+    "description": "Creando un proyecto con POO",
+    "type": "project",
+    "authors": [
+        {
+            "name": "SebastianSR",
+            "email": "102806578+Sxnturce@users.noreply.github.com"
+        }
+    ],
+    "require": {},
+    "autoload":{
+        "psr-4":{
+            "app\\": "./class"
+        }
+    }
+}
