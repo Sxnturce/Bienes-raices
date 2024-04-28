@@ -7,12 +7,6 @@ use app\Propiedad;
 require('../../includes/app.php');
 
 
-$propiedad = new Propiedad();
-
-varDump($propiedad);
-exit;
-
-
 session_start();
 $auth = $_SESSION['login'];
 if (!$auth) {
@@ -34,7 +28,6 @@ includeTemplate('header', 'header_admin');
 
 $verificador = "";
 $mesage = "";
-$error = "";
 
 $titulo = "";
 $precio = "";
@@ -47,46 +40,18 @@ $vendedores_id = "";
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titulo =  mysqli_real_escape_string($db, $_POST['titulo']);
-    $precio =  mysqli_real_escape_string($db, $_POST['precio']);
-    $descripcion =  mysqli_real_escape_string($db, $_POST['descripcion']);
-    $habitaciones =  mysqli_real_escape_string($db, $_POST['habitaciones']);
-    $wc =  mysqli_real_escape_string($db, $_POST['wc']);
-    $estacionamiento = mysqli_real_escape_string($db, $_POST['estacionamiento']);
-    $creado = date('Y/m/d');
+    $propiedad = new Propiedad($_POST);
+    $verificador =  $propiedad->getVerificador();
+    $mesage = $propiedad->getMessage();
 
-    //Almacenar imagen
-    $imagen = $_FILES['imagen'];
-    $size = 1024 * 1024 * 2;
 
-    if ($imagen["name"] === "") {
-        $error  = "Debe subir una imagen";
-    }
-
-    if ($imagen["size"] > $size) {
-        $error = "La imagen es muy pesada";
-    }
-
-    //Verificar si se eligio a un vendedor
-    if (isset($_POST['vendedor']) && $_POST['vendedor'] != "") {
-        $vendedores_id = $_POST['vendedor'];
-    }
-
-    //Revisar que los campos no esten vacios
-    if ($titulo === '' || $precio === ''  ||    $descripcion === '' || $habitaciones === '' || $wc === '' || $estacionamiento === '' || $vendedores_id === '') {
-        $verificador = 'Todos los campos son obligatorios';
-    }
-
-    if (strlen($descripcion) < 50) {
-        $mesage = 'Como minimo deben ser 50 caracteres en la descripción';
-    } else if (strlen($descripcion) > 512) {
-        $mesage = 'Como maximo pueden ser 512 caracteres en la descripción';
-    }
 
     //Insertar datos en la db
     if (empty($verificador) && empty($mesage) && empty($error)) {
-
+        /* $imagen = $_FILES['imagen']; */
         //Crear carpeta
+
+        $propiedad->saveInfo();
         $carpetaImagenes = "../../imagenes/";
         if (!is_dir($carpetaImagenes)) {
             mkdir($carpetaImagenes);
@@ -98,8 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         move_uploaded_file($imagen["tmp_name"], $carpetaImagenes  . $nombreImagen);
 
-        //Peticion sql
-        $query = "INSERT INTO propiedades (titulo, precio,descripcion,vendedores_id,habitaciones,wc,estacionamiento,creado,imagen) VALUES ('$titulo', '$precio', '$descripcion', '$vendedores_id', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$nombreImagen');";
+
 
         $peticion = mysqli_query($db, $query);
 
@@ -134,7 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form__div">
                     <label for="imagen" class="form__label">Imagen: </label>
                     <input type="file" class="form__input" id="imagen" name="imagen" accept="image/jpeg, image/png">
-                    <?php echo "<div style='color: #dd5f5f;'> $error </div>" ?>
                 </div>
                 <div class="form__div">
                     <label for="descripcion" class="form__label">Descripción: </label>
@@ -161,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <legend>Seleccione vendedor</legend>
                 <div class="form__div">
                     <label for="vendedor" class="form__label">Vendedor</label>
-                    <select name="vendedor" id="vendedor" class="form__input">
+                    <select name="vendedores_id" id="vendedor" class="form__input">
                         <option value="" selected>-- Seleccione --</option>
                         <?php
                         $vendedores = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
