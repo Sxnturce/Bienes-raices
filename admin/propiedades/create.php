@@ -26,8 +26,14 @@ $resultado = mysqli_query($db, $consulta);
 //Funciones
 includeTemplate('header', 'header_admin');
 
-$verificador = "";
+
+$tituloErr = "";
 $mesage = "";
+$precioErr = "";
+$habiErr = "";
+$wcErr = "";
+$estErr = "";
+$vendErr = "";
 
 $titulo = "";
 $precio = "";
@@ -41,13 +47,20 @@ $vendedores_id = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $propiedad = new Propiedad($_POST);
-    $verificador =  $propiedad->getVerificador();
-    $mesage = $propiedad->getMessage();
+
+    //Verificar que no exista ningun input vacio
+    $tituloErr =  $propiedad->checkTitle();
+    $mesage = $propiedad->checkMessage();
+    $precioErr = $propiedad->checkPrecio();
+    $habiErr = $propiedad->checkRooms();
+    $wcErr = $propiedad->checkWC();
+    $estErr = $propiedad->checkStaiment();
+    $vendErr = $propiedad->checkVendedor();
 
 
 
     //Insertar datos en la db
-    if (empty($verificador) && empty($mesage) && empty($error)) {
+    if (empty($tituloErr) && empty($mesage) && empty($precioErr) && empty($habiErr) &&  empty($wcErr) && empty($estErr) && empty($vendErr)) {
         /* $imagen = $_FILES['imagen']; */
         //Crear carpeta
 
@@ -62,10 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nombreImagen = md5(uniqid(strval(rand()), true)) . ".jpg";
 
         move_uploaded_file($imagen["tmp_name"], $carpetaImagenes  . $nombreImagen);
-
-
-
-        $peticion = mysqli_query($db, $query);
 
         //Limpiar los inputs
         if ($peticion) {
@@ -82,18 +91,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <form class="form create__form" method="POST" action="./create.php" enctype="multipart/form-data">
-            <div style=" width: 100%; background-color: #993030;">
-                <p style="text-align: center; width: 100%; font-weight: 500; color: white;"><?php echo $verificador ?></p>
-            </div>
             <fieldset>
                 <legend>Informacion general</legend>
                 <div class="form__div">
                     <label for="titulo" class="form__label">Titulo: </label>
-                    <input type="text" class="form__input" id="titulo" name="titulo" placeholder="Titulo de Propiedad" value="<?php echo $titulo ?>">
+                    <input type="text" class="form__input" id="titulo" name="titulo" placeholder="Titulo de Propiedad" value="<?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->titulo : "" ?>">
+                    <?php echo "<div style='color: #dd5f5f;'> $tituloErr </div>" ?>
                 </div>
                 <div class="form__div">
                     <label for="precio" class="form__label">Precio: </label>
                     <input type="number" class="form__input" id="precio" name="precio" placeholder="Precio de Propiedad" value="<?php echo $precio ?>">
+                    <?php echo "<div style='color: #dd5f5f;'> $precioErr </div>" ?>
                 </div>
                 <div class="form__div">
                     <label for="imagen" class="form__label">Imagen: </label>
@@ -110,14 +118,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form__div">
                     <label for="habitaciones" class="form__label">Habitaciones: </label>
                     <input type="number" class="form__input" name="habitaciones" id="habitaciones" placeholder="Ej. 3" min="1" max="9" value="<?php echo $habitaciones ?>">
+                    <?php echo "<div style='color: #dd5f5f;'> $habiErr </div>" ?>
                 </div>
                 <div class="form__div">
                     <label for="wc" class="form__label">Baños: </label>
                     <input type="number" class="form__input" id="wc" name="wc" placeholder="Ej. 3" min="1" max="9" value="<?php echo $wc ?>">
+                    <?php echo "<div style='color: #dd5f5f;'> $wcErr </div>" ?>
                 </div>
                 <div class="form__div">
                     <label for="estacionamiento" class="form__label">Estacionamiento: </label>
                     <input type="number" class="form__input" id="estacionamiento" name="estacionamiento" placeholder="Ej. 3" min="1" max="9" value="<?php echo $estacionamiento ?>">
+                    <?php echo "<div style='color: #dd5f5f;'> $estErr </div>" ?>
                 </div>
             </fieldset>
             <fieldset>
@@ -133,6 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <?php echo $vendedor['nombre'] . " " . $vendedor['apellido'] ?></option>
                         <?php endforeach; ?>
                     </select>
+                    <?php echo "<div style='color: #dd5f5f;'> $vendErr </div>" ?>
                 </div>
             </fieldset>
             <input type="submit" class="btn__create" value="Crear propiedad">

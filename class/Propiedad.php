@@ -10,8 +10,13 @@ class Propiedad
 {
     protected static $db;
     protected static $columnsDB = ['id', 'titulo', 'precio', 'imagen', 'descripcion', 'habitaciones', 'wc', 'estacionamiento', 'creado', 'vendedores_id'];
+    protected static $tituloErr = "";
     protected static $mesage = "";
-    protected static $verificador = "";
+    protected static $precioErr = "";
+    protected static $habiErr = "";
+    protected static $wcErr = "";
+    protected static $estErr = "";
+    protected static $vendErr = "";
 
     public  $id;
     public  $titulo;
@@ -81,19 +86,62 @@ class Propiedad
 
         return $sanitizado;
     }
-
-    /*     public static function getErrores()
+    public function checkTitle()
     {
-        return self::$mesage;
-    } */
-    public function getVerificador()
-    {
-        //Revisar que los campos no esten vacios
-        if ($this->titulo === '' || $this->precio === ''  ||    $this->descripcion === '' || $this->habitaciones === '' || $this->wc === '' || $this->estacionamiento === '' || $this->vendedores_id === '') {
-            $verificador = 'Todos los campos son obligatorios';
-            self::$verificador = $verificador;
+        if ($this->titulo === "") {
+            self::$tituloErr = "El titulo no puede estar vacio";
         }
+        return self::$tituloErr;
+    }
+    public  function checkPrecio()
+    {
+        if ($this->precio === "") {
+            self::$precioErr = "El precio no puede estar vacio";
+        }
+        return self::$precioErr;
+    }
+    public function checkMessage()
+    {
+        if (strlen($this->descripcion) < 50) {
+            self::$mesage = 'Como minimo deben ser 50 caracteres en la descripción';
+        } else if (strlen($this->descripcion) > 512) {
+            self::$mesage = 'Como maximo pueden ser 512 caracteres en la descripción';
+        }
+        return self::$mesage;
+    }
 
+    public function checkRooms()
+    {
+        if ($this->habitaciones === "") {
+            self::$habiErr = "Seleccione un numero de habitaciones";
+        }
+        return self::$habiErr;
+    }
+
+    public function checkWC()
+    {
+        if ($this->habitaciones === "") {
+            self::$wcErr = "Seleccione un numero de Baños";
+        }
+        return self::$wcErr;
+    }
+
+    public function checkStaiment()
+    {
+        if ($this->habitaciones === "") {
+            self::$estErr = "Seleccione un numero de estacionamientos";
+        }
+        return self::$estErr;
+    }
+    public function checkVendedor()
+    {
+        if ($this->vendedores_id === "") {
+            self::$vendErr = "Seleccione un vendedor";
+        }
+        return self::$vendErr;
+    }
+    public function checkImage()
+    {
         //Almacenar imagen
         /*    
         $size = 1024 * 1024 * 2;
@@ -106,15 +154,5 @@ class Propiedad
             $error = "La imagen es muy pesada";
         }
         */
-        return $verificador;
-    }
-    public function getMessage()
-    {
-        if (strlen($this->descripcion) < 50) {
-            $mesage = 'Como minimo deben ser 50 caracteres en la descripción';
-        } else if (strlen($this->descripcion) > 512) {
-            $mesage = 'Como maximo pueden ser 512 caracteres en la descripción';
-        }
-        return self::$mesage = $mesage;
     }
 }
