@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace app;
 
-use function PHPSTORM_META\map;
 
 class Propiedad
 {
@@ -16,6 +15,7 @@ class Propiedad
     protected static $habiErr = "";
     protected static $wcErr = "";
     protected static $estErr = "";
+    protected static $imgErr = "";
     protected static $vendErr = "";
 
     public  $id;
@@ -39,7 +39,7 @@ class Propiedad
         $this->id = $args['id'] ?? "";
         $this->titulo = $args['titulo'] ?? "";
         $this->precio = $args['precio'] ?? "";
-        $this->imagen = $args['imagen'] ?? "imagen.jpg";
+        $this->imagen = $args['imagen'] ?? "";
         $this->descripcion = $args['descripcion'] ?? "";
         $this->habitaciones = $args['habitaciones'] ?? "";
         $this->wc = $args['wc'] ?? "";
@@ -61,6 +61,7 @@ class Propiedad
         $query .= "')";
 
         $resultado = self::$db->query($query);
+        return $resultado;
     }
 
 
@@ -85,6 +86,13 @@ class Propiedad
         }
 
         return $sanitizado;
+    }
+
+    public function setImage($imagen)
+    {
+        if ($imagen) {
+            $this->imagen = $imagen;
+        }
     }
     public function checkTitle()
     {
@@ -117,7 +125,6 @@ class Propiedad
         }
         return self::$habiErr;
     }
-
     public function checkWC()
     {
         if ($this->habitaciones === "") {
@@ -142,17 +149,9 @@ class Propiedad
     }
     public function checkImage()
     {
-        //Almacenar imagen
-        /*    
-        $size = 1024 * 1024 * 2;
-
-        if ($imagen["name"] === "") {
-            $error  = "Debe subir una imagen";
+        if ($this->imagen === "") {
+            self::$imgErr = "Ingrese una imagen";
         }
-
-        if ($imagen["size"] > $size) {
-            $error = "La imagen es muy pesada";
-        }
-        */
+        return self::$imgErr;
     }
 }

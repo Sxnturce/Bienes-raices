@@ -1,10 +1,11 @@
 <?php
 
 declare(strict_types=1);
+require('../../includes/app.php');
 
 use app\Propiedad;
+use Intervention\Image\ImageManagerStatic as Imagen;
 
-require('../../includes/app.php');
 
 
 session_start();
@@ -34,6 +35,7 @@ $habiErr = "";
 $wcErr = "";
 $estErr = "";
 $vendErr = "";
+$imgErr = "";
 
 $titulo = "";
 $precio = "";
@@ -48,7 +50,17 @@ $vendedores_id = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $propiedad = new Propiedad($_POST);
 
-    //Verificar que no exista ningun input vacio
+
+    //Generar nombre de una imagen
+    $nombreImagen = md5(uniqid(strval(rand()), true)) . ".jpg";
+
+    if ($_FILES['imagen']['tmp_name']) {
+        //Realiza un rezise a la imagen
+        $Imagen = Imagen::make($_FILES['imagen']['tmp_name'])->fit(800, 600);
+        $propiedad->setImage($nombreImagen);
+    }
+
+
     $tituloErr =  $propiedad->checkTitle();
     $mesage = $propiedad->checkMessage();
     $precioErr = $propiedad->checkPrecio();
@@ -56,26 +68,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $wcErr = $propiedad->checkWC();
     $estErr = $propiedad->checkStaiment();
     $vendErr = $propiedad->checkVendedor();
+    $imgErr = $propiedad->checkImage();
+
 
 
 
     //Insertar datos en la db
-    if (empty($tituloErr) && empty($mesage) && empty($precioErr) && empty($habiErr) &&  empty($wcErr) && empty($estErr) && empty($vendErr)) {
-        /* $imagen = $_FILES['imagen']; */
+    if (empty($tituloErr) && empty($mesage) && empty($precioErr) && empty($habiErr) &&  empty($wcErr) && empty($estErr) && empty($vendErr) && empty($imgErr)) {
         //Crear carpeta
-
-        $propiedad->saveInfo();
-        $carpetaImagenes = "../../imagenes/";
-        if (!is_dir($carpetaImagenes)) {
-            mkdir($carpetaImagenes);
+        if (!is_dir(CARPETA_IMAGENES)) {
+            mkdir(CARPETA_IMAGENES);
         }
 
+        //Guardamos la imagen en el servidor
+        $Imagen->save(CARPETA_IMAGENES . $nombreImagen);
 
-        //Generar nombre de una imagen
-        $nombreImagen = md5(uniqid(strval(rand()), true)) . ".jpg";
-
-        move_uploaded_file($imagen["tmp_name"], $carpetaImagenes  . $nombreImagen);
-
+        $peticion = $propiedad->saveInfo();
         //Limpiar los inputs
         if ($peticion) {
             header("Location: ../../admin?resultado=1");
@@ -100,16 +108,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="form__div">
                     <label for="precio" class="form__label">Precio: </label>
-                    <input type="number" class="form__input" id="precio" name="precio" placeholder="Precio de Propiedad" value="<?php echo $precio ?>">
+                    <input type="number" class="form__input" id="precio" name="precio" placeholder="Precio de Propiedad" value="<?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->precio : "" ?>">
                     <?php echo "<div style='color: #dd5f5f;'> $precioErr </div>" ?>
                 </div>
                 <div class="form__div">
                     <label for="imagen" class="form__label">Imagen: </label>
                     <input type="file" class="form__input" id="imagen" name="imagen" accept="image/jpeg, image/png">
+                    <?php echo "<div style='color: #dd5f5f;'> $imgErr </div>" ?>
                 </div>
                 <div class="form__div">
                     <label for="descripcion" class="form__label">Descripción: </label>
-                    <textarea name="descripcion" id="descripcion" cols="30" rows="10" class="form__input"> <?php echo $descripcion ?></textarea>
+                    <textarea name="descripcion" id="descripcion" cols="30" rows="10" class="form__input"> <?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->descripcion : "" ?></textarea>
                     <?php echo "<div style='color: #dd5f5f;'> $mesage </div>" ?>
                 </div>
             </fieldset>
@@ -117,17 +126,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <legend>Informacion de Propiedad</legend>
                 <div class="form__div">
                     <label for="habitaciones" class="form__label">Habitaciones: </label>
-                    <input type="number" class="form__input" name="habitaciones" id="habitaciones" placeholder="Ej. 3" min="1" max="9" value="<?php echo $habitaciones ?>">
+                    <input type="number" class="form__input" name="habitaciones" id="habitaciones" placeholder="Ej. 3" min="1" max="9" value="<?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->habitaciones : "" ?>">
                     <?php echo "<div style='color: #dd5f5f;'> $habiErr </div>" ?>
                 </div>
                 <div class="form__div">
                     <label for="wc" class="form__label">Baños: </label>
-                    <input type="number" class="form__input" id="wc" name="wc" placeholder="Ej. 3" min="1" max="9" value="<?php echo $wc ?>">
+                    <input type="number" class="form__input" id="wc" name="wc" placeholder="Ej. 3" min="1" max="9" value="<?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->wc : "" ?>">
                     <?php echo "<div style='color: #dd5f5f;'> $wcErr </div>" ?>
                 </div>
                 <div class="form__div">
                     <label for="estacionamiento" class="form__label">Estacionamiento: </label>
-                    <input type="number" class="form__input" id="estacionamiento" name="estacionamiento" placeholder="Ej. 3" min="1" max="9" value="<?php echo $estacionamiento ?>">
+                    <input type="number" class="form__input" id="estacionamiento" name="estacionamiento" placeholder="Ej. 3" min="1" max="9" value="<?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->estacionamiento : "" ?>">
                     <?php echo "<div style='color: #dd5f5f;'> $estErr </div>" ?>
                 </div>
             </fieldset>
