@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace app;
 
+use mysqli;
 
 class Propiedad
 {
@@ -87,6 +88,37 @@ class Propiedad
 
         return $sanitizado;
     }
+
+    //Creamos una funcion para realizar el query All
+    public static function all()
+    {
+        $query = "SELECT * FROM propiedades";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    //Separamos el codigo en otra clase para realizar la query en esta obtendremos un arreglo asosiativo y este lo almacenaremos en un arreglo con un foreach 
+    public static function consultarSQL($query)
+    {
+        $datos = self::$db->query($query)->fetch_all(MYSQLI_ASSOC);
+        $info = [];
+        foreach ($datos as $dat) {
+            $info[] = self::crearObjeto($dat);
+        }
+        return $info;
+    }
+    //Con esta funcion crearemos objetos, la instancia de objeto hace que tenga todos los datos del constructor y con un foreach hacemos un mapeo de la estructura del objeto dependiendo si existe un key o no 
+    protected static function crearObjeto($registro)
+    {
+        $objeto = new self();
+        foreach ($registro as $key => $value) {
+            if (property_exists($objeto, $key)) {
+                $objeto->$key = $value;
+            }
+        }
+        return $objeto;
+    }
+
 
     public function setImage($imagen)
     {

@@ -1,18 +1,15 @@
 <?php
-session_start();
-$auth = $_SESSION['login'];
-if (!$auth) {
-    header('Location: ../index.php');
-}
 
-require('../includes/funciones.php');
-require('../includes/config/database.php');
-$db = connectDB();
+require('../includes/app.php');
 
-$peticion = "SELECT * FROM propiedades;";
-$resultado = mysqli_query($db, $peticion);
+use app\Propiedad;
 
 includeTemplate('header', 'header');
+
+//Implementar un metodo para las propiedades
+
+$propiedad = Propiedad::all();
+
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -100,18 +97,17 @@ if (isset($_GET['resultado'])) {
         </thead>
         <tbody>
             <?php
-            $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-            foreach ($datos as $index => $data) : ?>
+            foreach ($propiedad as $index => $data) : ?>
                 <tr>
                     <td colspan="1"><?php echo $index ?></td>
-                    <td colspan="1"><?php echo $data['titulo'] ?></td>
-                    <td colspan="1"> <img src="../imagenes/<?php echo $data['imagen'] ?>" alt="imagen-tabla" class="img__tabla"></td>
-                    <td colspan="1">S./ <?php echo $data['precio'] ?></td>
+                    <td colspan="1"><?php echo $data->titulo ?></td>
+                    <td colspan="1"> <img src="../imagenes/<?php echo $data->imagen ?>" alt="imagen-tabla" class="img__tabla"></td>
+                    <td colspan="1">S./ <?php echo $data->precio ?></td>
                     <td colspan="1" class="acciones">
                         <div class="container__accions">
-                            <a href="./propiedades/update.php?id=<?php echo $data['id'] ?>&&imagen=<?php echo $data['imagen'] ?>" class="update">Actualizar</a>
+                            <a href="./propiedades/update.php?id=<?php echo $data->id ?>&&imagen=<?php echo $data->imagen ?>" class="update">Actualizar</a>
                             <form method="POST">
-                                <input type="hidden" name="id" id="id" value="<?php echo $data['id'] ?>">
+                                <input type="hidden" name="id" id="id" value="<?php echo $data->id ?>">
                                 <input type="submit" class="remove" value="Eliminar" name="delete">
                             </form>
                         </div>
