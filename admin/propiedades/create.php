@@ -20,6 +20,7 @@ $resultado = mysqli_query($db, $consulta);
 //Funciones
 includeTemplate('header', 'header_admin');
 
+$propiedad = new Propiedad();
 
 $tituloErr = "";
 $mesage = "";
@@ -29,16 +30,6 @@ $wcErr = "";
 $estErr = "";
 $vendErr = "";
 $imgErr = "";
-
-$titulo = "";
-$precio = "";
-$imagen = "";
-$descripcion = "";
-$habitaciones = "";
-$wc = "";
-$estacionamiento = "";
-$vendedores_id = "";
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $propiedad = new Propiedad($_POST);
@@ -92,63 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <form class="form create__form" method="POST" action="./create.php" enctype="multipart/form-data">
-            <fieldset>
-                <legend>Informacion general</legend>
-                <div class="form__div">
-                    <label for="titulo" class="form__label">Titulo: </label>
-                    <input type="text" class="form__input" id="titulo" name="titulo" placeholder="Titulo de Propiedad" value="<?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->titulo : "" ?>">
-                    <?php echo "<div style='color: #dd5f5f;'> $tituloErr </div>" ?>
-                </div>
-                <div class="form__div">
-                    <label for="precio" class="form__label">Precio: </label>
-                    <input type="number" class="form__input" id="precio" name="precio" placeholder="Precio de Propiedad" value="<?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->precio : "" ?>">
-                    <?php echo "<div style='color: #dd5f5f;'> $precioErr </div>" ?>
-                </div>
-                <div class="form__div">
-                    <label for="imagen" class="form__label">Imagen: </label>
-                    <input type="file" class="form__input" id="imagen" name="imagen" accept="image/jpeg, image/png">
-                    <?php echo "<div style='color: #dd5f5f;'> $imgErr </div>" ?>
-                </div>
-                <div class="form__div">
-                    <label for="descripcion" class="form__label">Descripción: </label>
-                    <textarea name="descripcion" id="descripcion" cols="30" rows="10" class="form__input"> <?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->descripcion : "" ?></textarea>
-                    <?php echo "<div style='color: #dd5f5f;'> $mesage </div>" ?>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Informacion de Propiedad</legend>
-                <div class="form__div">
-                    <label for="habitaciones" class="form__label">Habitaciones: </label>
-                    <input type="number" class="form__input" name="habitaciones" id="habitaciones" placeholder="Ej. 3" min="1" max="9" value="<?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->habitaciones : "" ?>">
-                    <?php echo "<div style='color: #dd5f5f;'> $habiErr </div>" ?>
-                </div>
-                <div class="form__div">
-                    <label for="wc" class="form__label">Baños: </label>
-                    <input type="number" class="form__input" id="wc" name="wc" placeholder="Ej. 3" min="1" max="9" value="<?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->wc : "" ?>">
-                    <?php echo "<div style='color: #dd5f5f;'> $wcErr </div>" ?>
-                </div>
-                <div class="form__div">
-                    <label for="estacionamiento" class="form__label">Estacionamiento: </label>
-                    <input type="number" class="form__input" id="estacionamiento" name="estacionamiento" placeholder="Ej. 3" min="1" max="9" value="<?php echo ($_SERVER["REQUEST_METHOD"] === 'POST') ? $propiedad->estacionamiento : "" ?>">
-                    <?php echo "<div style='color: #dd5f5f;'> $estErr </div>" ?>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Seleccione vendedor</legend>
-                <div class="form__div">
-                    <label for="vendedor" class="form__label">Vendedor</label>
-                    <select name="vendedores_id" id="vendedor" class="form__input">
-                        <option value="" selected>-- Seleccione --</option>
-                        <?php
-                        $vendedores = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-                        foreach ($vendedores as $vendedor) : ?>
-                            <option value="<?php echo $vendedor['id'] ?>">
-                                <?php echo $vendedor['nombre'] . " " . $vendedor['apellido'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <?php echo "<div style='color: #dd5f5f;'> $vendErr </div>" ?>
-                </div>
-            </fieldset>
+            <?php include('../../includes/templates/form/form.php') ?>
             <input type="submit" class="btn__create" value="Crear propiedad">
         </form>
     </div>

@@ -17,3 +17,10 @@ function varDump($dato)
     var_dump($dato);
     echo "</pre>";
 }
+
+
+function s($info): string
+{
+    $s = htmlspecialchars($info);
+    return $s;
+}
